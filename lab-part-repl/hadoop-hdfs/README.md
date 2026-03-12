@@ -134,3 +134,11 @@ HDFS detecta la falla y replica los bloques.
 
 ## Balanceo
 ¿HDFS intenta distribuir bloques equitativamente?
+
+# plus: se verá más adelante
+
+## MapReduce WordCount
+## Ejecutar ejemplo:
+    hadoop jar \
+    /opt/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-*.jar \
+    wordcount /data/testfile /output
