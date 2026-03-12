@@ -1,5 +1,4 @@
 <configuration>
-
   <property>
     <name>fs.defaultFS</name>
     <value>hdfs://namenode:9000</value>
@@ -9,5 +8,4 @@
     <name>hadoop.tmp.dir</name>
     <value>/tmp/hadoop-${user.name}</value>
   </property>
-
 </configuration>

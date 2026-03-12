@@ -1,9 +1,17 @@
 FROM apache/hadoop:3.3.6
 
-ENV HDFS_NAMENODE_USER=root
-ENV HDFS_DATANODE_USER=root
-ENV HDFS_SECONDARYNAMENODE_USER=root
-ENV YARN_RESOURCEMANAGER_USER=root
-ENV YARN_NODEMANAGER_USER=root
+USER root
 
-CMD ["/opt/hadoop/bin/hdfs", "datanode"]
+ENV HADOOP_namenode_USER=root
+ENV HADOOP_datanode_USER=root
+ENV HADOOP_secondarynamenode_USER=root
+ENV HADOOP_resourcemanager_USER=root
+ENV HADOOP_nodemanager_USER=root
+
+COPY config/core-site.xml /opt/hadoop/etc/hadoop/core-site.xml
+COPY config/hdfs-site.xml /opt/hadoop/etc/hadoop/hdfs-site.xml
+COPY config/mapred-site.xml /opt/hadoop/etc/hadoop/mapred-site.xml
+
+RUN mkdir -p /hadoop/dfs/data
+
+CMD ["hdfs", "datanode"]

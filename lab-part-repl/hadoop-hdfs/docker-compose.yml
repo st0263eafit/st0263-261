@@ -1,50 +1,63 @@
-version: "3"
-
 services:
-
   namenode:
-    build: ./namenode
+    build:
+      context: .
+      dockerfile: namenode/Dockerfile
     container_name: namenode
     hostname: namenode
     ports:
       - "9870:9870"
       - "9000:9000"
     volumes:
-      - ./config:/opt/hadoop/etc/hadoop
-      - namenode:/hadoop/dfs/name
+      - namenode_data:/hadoop/dfs/name
+    networks:
+      - hadoopnet
 
   datanode1:
-    build: ./datanode
+    build:
+      context: .
+      dockerfile: datanode/Dockerfile
     container_name: datanode1
     hostname: datanode1
     volumes:
-      - ./config:/opt/hadoop/etc/hadoop
-      - datanode1:/hadoop/dfs/data
+      - datanode1_data:/hadoop/dfs/data
     depends_on:
       - namenode
+    networks:
+      - hadoopnet
 
   datanode2:
-    build: ./datanode
+    build:
+      context: .
+      dockerfile: datanode/Dockerfile
     container_name: datanode2
     hostname: datanode2
     volumes:
-      - ./config:/opt/hadoop/etc/hadoop
-      - datanode2:/hadoop/dfs/data
+      - datanode2_data:/hadoop/dfs/data
     depends_on:
       - namenode
+    networks:
+      - hadoopnet
 
   datanode3:
-    build: ./datanode
+    build:
+      context: .
+      dockerfile: datanode/Dockerfile
     container_name: datanode3
     hostname: datanode3
     volumes:
-      - ./config:/opt/hadoop/etc/hadoop
-      - datanode3:/hadoop/dfs/data
+      - datanode3_data:/hadoop/dfs/data
     depends_on:
       - namenode
+    networks:
+      - hadoopnet
 
 volumes:
-  namenode:
-  datanode1:
-  datanode2:
-  datanode3:
+  namenode_data:
+  datanode1_data:
+  datanode2_data:
+  datanode3_data:
+
+networks:
+  hadoopnet:
+    driver: bridge
