@@ -1,0 +1,37 @@
+version: "3.8"
+
+services:
+
+  pg-replica:
+    image: postgres:17
+    container_name: pg-replica
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      # Variables para el script de réplica
+      REPLICA_HOST: pg-leader
+      REPLICA_PORT: "5432"
+      REPLICA_USER: replicator
+      REPLICA_PASSWORD: replica_pass
+    depends_on:
+      - pg-leader
+    ports:
+      - "5433:5432"
+    volumes:
+      # Datos persistentes del replica
+      - pg_replica_data:/var/lib/postgresql/data
+
+      # Config del replica
+      - ./replica/conf/postgresql.conf:/etc/postgresql/postgresql.conf:ro
+
+      # Script de arranque (hace basebackup si el data dir está vacío)
+      - ./replica/conf/replica-entrypoint.sh:/usr/local/bin/replica-entrypoint.sh:ro
+    entrypoint: ["/bin/bash", "/usr/local/bin/replica-entrypoint.sh"]
+    networks:
+      - pgnet
+
+networks:
+  pgnet:
+
+volumes:
+  pg_replica_data:
