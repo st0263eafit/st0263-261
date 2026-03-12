@@ -1,0 +1,50 @@
+version: "3"
+
+services:
+
+  namenode:
+    build: ./namenode
+    container_name: namenode
+    hostname: namenode
+    ports:
+      - "9870:9870"
+      - "9000:9000"
+    volumes:
+      - ./config:/opt/hadoop/etc/hadoop
+      - namenode:/hadoop/dfs/name
+
+  datanode1:
+    build: ./datanode
+    container_name: datanode1
+    hostname: datanode1
+    volumes:
+      - ./config:/opt/hadoop/etc/hadoop
+      - datanode1:/hadoop/dfs/data
+    depends_on:
+      - namenode
+
+  datanode2:
+    build: ./datanode
+    container_name: datanode2
+    hostname: datanode2
+    volumes:
+      - ./config:/opt/hadoop/etc/hadoop
+      - datanode2:/hadoop/dfs/data
+    depends_on:
+      - namenode
+
+  datanode3:
+    build: ./datanode
+    container_name: datanode3
+    hostname: datanode3
+    volumes:
+      - ./config:/opt/hadoop/etc/hadoop
+      - datanode3:/hadoop/dfs/data
+    depends_on:
+      - namenode
+
+volumes:
+  namenode:
+  datanode1:
+  datanode2:
+  datanode3:
