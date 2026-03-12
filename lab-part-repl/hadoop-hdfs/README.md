@@ -1,5 +1,16 @@
 # Levantar el cluster
+
+la primera vez:
+    
+    docker compose build --no-cache
+
+regularmente:
+
     docker compose up -d
+
+para bajar:
+
+    docker compose down
 
 # Ver contenedores:
     docker ps
@@ -24,6 +35,11 @@ Formatear:
 Reiniciar contenedor:
 
     docker restart namenode
+
+# entender
+
+    docker exec -it namenode bash
+    hdfs dfsadmin -report
 
 # Interfaz Web de HDFS
 http://localhost:9870
