@@ -22,29 +22,19 @@ Debe mostrar:
     datanode2
     datanode3
 
-# Formatear HDFS (solo la primera vez)
-
-Entrar al namenode:
-
-    docker exec -it namenode bash
-
-Formatear:
-    
-    hdfs namenode -format
-
-Reiniciar contenedor:
-
-    docker restart namenode
-
 # entender
 
     docker exec -it namenode bash
     hdfs dfsadmin -report
 
 # Interfaz Web de HDFS
-http://localhost:9870
+
+crear un tunel en tu máquina para lograr este tunel:
+
+    http://localhost:9870
 
 verán:
+
     DataNodes activos
     bloques
     replicación
@@ -71,9 +61,9 @@ verán algo como:
     hdfs dfs -mkdir /data
     hdfs dfs -ls /
 
-# crear un archivo de 200 MB
+# crear un archivo de 2GB
 
-    dd if=/dev/urandom of=bigfile.txt bs=1M count=200
+    dd if=/dev/urandom of=bigfile.txt bs=1M count=2000
 
 # copiarlo a HDFS
 
