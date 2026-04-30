@@ -28,7 +28,7 @@ VER MÁS INDICACIONES EN:
 
 *[Lab3-1](lab3-1-hdfs-s3.txt)
 
-Copiar todos los archivos del [datasets](../datasets) tanto en S3 (permanente) y en HDFS (temporales). 
+Copiar todos los archivos del [datasets](../datasets/) tanto en S3 (permanente) y en HDFS (temporales). 
 
 * ver: [HDFS](01-hdfs)
 
