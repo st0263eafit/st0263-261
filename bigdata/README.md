@@ -9,7 +9,7 @@ Creando tu propio cluster, videos guia de como crear y usar cluser Amazon EMR co
 
 ## DATASETS
 
-* [datasets](datasets)
+* [datasets](../datasets)
 
 ### Crear y gestionar Clusters Amazon EMR
 
