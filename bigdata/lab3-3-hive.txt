@@ -1,13 +1,12 @@
 ST0263 TÓPICOS ESPECIALES EN TELEMÁTICA
 
-LAB 3-2: PROCESAMIENTO SQL CON APACHE HIVE
+LAB 3-3: PROCESAMIENTO SQL CON APACHE HIVE
 
 1. Tener un cluster EMR previamente creado
 
 2. seguir los lineamientos del github:
 
-https://github.com/st0263eafit/st0263-261/tree/main/bigdata
-
-HACER LAS ACTIVIDADES PROPUESTAS EN:
-
 https://github.com/st0263eafit/st0263-261/tree/main/bigdata/02-hive
+
+3. utilizando sus propios datasets, realice las actividades principales de los ejercicios de hive pero 
+sobre sus propios datos.
